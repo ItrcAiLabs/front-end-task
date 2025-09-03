@@ -7,6 +7,7 @@ export default function ForgotPassword() {
     const [step, setStep] = useState(1);
     const [phoneOrEmail, setPhoneOrEmail] = useState("");
     const [otp, setOtp] = useState("");
+    const [username, setUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
 
     const nextStep = () => setStep((prev) => prev + 1);
@@ -19,6 +20,7 @@ export default function ForgotPassword() {
                     <PhoneStep
                         phoneOrEmail={phoneOrEmail}
                         setPhoneOrEmail={setPhoneOrEmail}
+                        setUsername={setUsername}
                         nextStep={nextStep}
                     />
                 )}
@@ -34,12 +36,12 @@ export default function ForgotPassword() {
 
                 {step === 3 && (
                     <ResetPasswordStep
+                        username={username} 
                         newPassword={newPassword}
                         setNewPassword={setNewPassword}
-                        nextStep={nextStep}
                     />
                 )}
             </div>
         </div>
-    )
+    );
 }

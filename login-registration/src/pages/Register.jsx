@@ -7,6 +7,8 @@ import CredentialsStep from "../components/register/CredentialsStep";
 export default function Register() {
     const [step, setStep] = useState(1);
     const [phone, setPhone] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     return (
@@ -29,6 +31,10 @@ export default function Register() {
 
                 {step === 3 && (
                     <CredentialsStep
+                        username={username}
+                        setUsername={setUsername}
+                        password={password}
+                        setPassword={setPassword}
                         onFinish={() => navigate("/dashboard")}
                     />
                 )}

@@ -10,15 +10,19 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!username || password) {
-            setError("enter your username and password");
+        const storedUser = JSON.parse(localStorage.getItem("authUser"));
+
+        if (!storedUser) {
+            setError("there is no users yet. please register first.");
             return;
         }
 
-        console.log("Login attempt:", { username, password });
-
-        setError("");
-        navigate("/dashboard");
+        if (storedUser.username === username && storedUser.password === password) {
+            setError("");
+            navigate("/dashboard");
+        } else {
+            setError("wrong username or password")
+        }
     };
 
     return (

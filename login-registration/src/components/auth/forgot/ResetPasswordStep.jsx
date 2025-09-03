@@ -6,12 +6,22 @@ export default function ResetPasswordStep({ newPassword, setNewPassword }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (newPassword.length < 6) {
-            alert("your password should be at least 6 characters long");
+        if (newPassword.length < 4) {
+            alert("your password should be at least 4 characters long");
             return;
         }
 
-        console.log("Password reset successfully:", newPassword);
+        const storedUser = JSON.parse(localStorage.getItem("authUser"));
+
+        if (!storedUser) {
+            alert("No user found. Please register first.");
+            return;
+        }
+
+        const updatedUser = { ...storedUser, password: newPassword };
+        localStorage.setItem("authUser", JSON.stringify(updatedUser));
+
+        alert("Password reset successfully. You can now log in with your new password.");
 
         navigate("/login");
     };
