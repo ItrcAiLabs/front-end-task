@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PhoneStep from "../components/register/PhoneStep";
+import OtpStep from "../components/register/OtpStep";
+import CredentialsStep from "../components/register/CredentialsStep";
 
 export default function Register() {
     const [step, setStep] = useState(1);
     const [phone, setPhone] = useState("");
+    const navigate = useNavigate();
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-50">
@@ -12,23 +16,23 @@ export default function Register() {
                     <PhoneStep
                         phone={phone}
                         setPhone={setPhone}
-                        onNext={() => setStep(2)} 
+                        onNext={() => setStep(2)}
                     />
                 )}
-                {step !== 1 && (
-                    <div className="text-center text-gray-500">
-                        <p>Step {step} (coming soon)</p>
-                    </div>
+
+                {step === 2 && (
+                    <OtpStep
+                        phone={phone}
+                        onNext={() => setStep(3)}
+                    />
+                )}
+
+                {step === 3 && (
+                    <CredentialsStep
+                        onFinish={() => navigate("/dashboard")}
+                    />
                 )}
             </div>
         </div>
-    )
+    );
 }
-
-// export default function Register() {
-//     return (
-//         <>
-//             <h1>Register Page</h1>
-//         </>
-//     )
-// }
