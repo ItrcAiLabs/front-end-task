@@ -14,33 +14,44 @@ export default function ForgotPassword() {
     const prevStep = () => setStep((prev) => prev - 1);
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50">
-            <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-                {step === 1 && (
-                    <PhoneStep
-                        phoneOrEmail={phoneOrEmail}
-                        setPhoneOrEmail={setPhoneOrEmail}
-                        setUsername={setUsername}
-                        nextStep={nextStep}
+        <div className="flex items-center justify-center h-[80vh]">
+            <div className="aspect-[2/1] w-full max-w-4xl bg-white rounded-2xl shadow-md overflow-hidden grid grid-cols-2">
+                
+                <div className="flex items-center justify-center bg-gray-200">
+                    <img
+                        src="/images/forgot-password.jpg"
+                        alt="Forgot Password Illustration"
+                        className="object-cover w-full h-full"
                     />
-                )}
+                </div>
 
-                {step === 2 && (
-                    <OtpStep
-                        otp={otp}
-                        setOtp={setOtp}
-                        nextStep={nextStep}
-                        prevStep={prevStep}
-                    />
-                )}
+                <div className="p-8 flex flex-col justify-center">
+                    {step === 1 && (
+                        <PhoneStep
+                            phoneOrEmail={phoneOrEmail}
+                            setPhoneOrEmail={setPhoneOrEmail}
+                            setUsername={setUsername}
+                            nextStep={nextStep}
+                        />
+                    )}
 
-                {step === 3 && (
-                    <ResetPasswordStep
-                        username={username} 
-                        newPassword={newPassword}
-                        setNewPassword={setNewPassword}
-                    />
-                )}
+                    {step === 2 && (
+                        <OtpStep
+                            otp={otp}
+                            setOtp={setOtp}
+                            nextStep={nextStep}
+                            prevStep={prevStep}
+                        />
+                    )}
+
+                    {step === 3 && (
+                        <ResetPasswordStep
+                            username={username} 
+                            newPassword={newPassword}
+                            setNewPassword={setNewPassword}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );

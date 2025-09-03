@@ -12,32 +12,43 @@ export default function Register() {
     const navigate = useNavigate();
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50">
-            <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-                {step === 1 && (
-                    <PhoneStep
-                        phone={phone}
-                        setPhone={setPhone}
-                        onNext={() => setStep(2)}
+        <div className="flex items-center justify-center h-[80vh]">
+            <div className="aspect-[2/1] w-full max-w-4xl bg-white rounded-2xl shadow-md overflow-hidden grid grid-cols-2">
+                
+                <div className="flex items-center justify-center bg-gray-200">
+                    <img
+                        src="/images/register.jpg"
+                        alt="Register Illustration"
+                        className="object-cover w-full h-full"
                     />
-                )}
+                </div>
 
-                {step === 2 && (
-                    <OtpStep
-                        phone={phone}
-                        onNext={() => setStep(3)}
-                    />
-                )}
+                <div className="p-8 flex flex-col justify-center">
+                    {step === 1 && (
+                        <PhoneStep
+                            phone={phone}
+                            setPhone={setPhone}
+                            onNext={() => setStep(2)}
+                        />
+                    )}
 
-                {step === 3 && (
-                    <CredentialsStep
-                        username={username}
-                        setUsername={setUsername}
-                        password={password}
-                        setPassword={setPassword}
-                        onFinish={() => navigate("/dashboard")}
-                    />
-                )}
+                    {step === 2 && (
+                        <OtpStep
+                            phone={phone}
+                            onNext={() => setStep(3)}
+                        />
+                    )}
+
+                    {step === 3 && (
+                        <CredentialsStep
+                            username={username}
+                            setUsername={setUsername}
+                            password={password}
+                            setPassword={setPassword}
+                            onFinish={() => navigate("/dashboard")}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );

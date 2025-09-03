@@ -13,21 +13,19 @@ export default function PhoneStep({ phoneOrEmail, setPhoneOrEmail, nextStep }) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-semibold text-center text-gray-700">
-                password retrieval
+            <h2 className="text-3xl font-semibold text-center text-gray-700">
+                Reset Password
             </h2>
 
             <div>
-                <label className="block text-sm font-medium text-gray-600 mb-1">
-                    phone or email
-                </label>
                 <input
                     type="text"
                     value={phoneOrEmail}
                     onChange={(e) => setPhoneOrEmail(e.target.value)}
-                    placeholder=""
-                    className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-400"
+                    placeholder="Phone or Email"
+                    className="w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 focus:outline-none focus:ring focus:ring-blue-400 hover:border-indigo-500 transition"
                 />
+
             </div>
             <button
                 type="submit"

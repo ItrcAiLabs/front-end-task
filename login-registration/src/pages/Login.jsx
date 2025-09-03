@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { UserIcon, PasswordIcon } from '../components/ui/icon';
+
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -21,60 +23,75 @@ export default function Login() {
             setError("");
             navigate("/dashboard");
         } else {
-            setError("wrong username or password")
+            setError("wrong username or password");
         }
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-50">
-            <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-center text-gray-700">
-                        login
-                    </h2>
+        <div className="flex items-center justify-center h-[80vh]">
+            <div className="aspect-[2/1] w-full max-w-4xl bg-white rounded-2xl shadow-md overflow-hidden grid grid-cols-2">
+                
+                <div className="flex items-center justify-center bg-gray-200">
+                    <img
+                        src="/images/login.jpg"
+                        alt="Login Illustration"
+                        className="object-cover w-full h-full"
+                    />
+                </div>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            username
-                        </label>
-                        <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            placeholder="username"
-                            className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-400"
-                        />
-                    </div>
+                <div className="p-8 flex flex-col justify-center">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <h2 className="text-3xl font-semibold text-center text-gray-700 pb-4">
+                            Log in
+                        </h2>
 
-                    <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            password
-                        </label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="******"
-                            className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-400"
-                        />
-                    </div>
+                        <div>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                placeholder="Username"
+                                className="
+                                    w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                                    hover:border-indigo-500 transition
+                                "
+                            />
+                        </div>
 
-                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                        <div>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                className="
+                                    w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                                    hover:border-indigo-500 transition
+                                "
+                            />
+                            
+                        </div>
 
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
-                    >
-                        login
-                    </button>
+                        {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                    <p className="text-sm text-center text-gray-500 mt-2">
-                        <Link to="/forgot-password" className="text-blue-500 hover:underline">
-                            forgot password?
-                        </Link>
-                    </p>
-                </form>
+                        <button
+                            type="submit"
+                            className="
+                                w-full bg-sky-500 text-white py-2 rounded-lg  
+                                transition duration-400 hover:bg-sky-600
+                            "
+                        >
+                            Log in
+                        </button>
+
+                        <p className="text-sm text-center text-sky-500 mt-2">
+                            <Link to="/forgot-password" className="text-sky-500 hover:text-indigo-500 transition">
+                                Forgot password?
+                            </Link>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
-    )
+    );
 }

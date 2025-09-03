@@ -28,20 +28,17 @@ export default function ResetPasswordStep({ newPassword, setNewPassword }) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-xl font-semibold text-center text-gray-700">
+            <h2 className="text-2xl font-semibold text-center text-gray-700">
                 new password
             </h2>
 
             <div>
-                <label className="block text-sm font-medium text-gray-600 mb-1">
-                    new password
-                </label>
                 <input
                     type="password"
-                    value={newPassword}
+                    // value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="******"
-                    className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-400"
+                    placeholder="Enter your new password"
+                    className="w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 hover:border-indigo-500 transition"
                 />
             </div>
 
