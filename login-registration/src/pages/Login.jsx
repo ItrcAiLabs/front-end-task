@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { UserIcon, PasswordIcon } from '../components/ui/icon';
-
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -53,7 +51,7 @@ export default function Login() {
                                 placeholder="Username"
                                 className="
                                     w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
-                                    hover:border-indigo-500 transition
+                                    hover:border-indigo-500 transition focus:outline-none
                                 "
                             />
                         </div>
@@ -66,7 +64,7 @@ export default function Login() {
                                 placeholder="Password"
                                 className="
                                     w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
-                                    hover:border-indigo-500 transition
+                                    hover:border-indigo-500 transition focus:outline-none
                                 "
                             />
                             
@@ -78,7 +76,10 @@ export default function Login() {
                             <button
                                 type="button"
                                 onClick={() => navigate("/")}
-                                className="w-[48%] bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
+                                className="
+                                    w-[48%] bg-gray-300 text-gray-700 px-4 py-2 rounded-lg 
+                                    transition duration-400 hover:bg-gray-400 hover:text-white
+                                "
                             >
                                 back
                             </button>
@@ -94,7 +95,7 @@ export default function Login() {
                         </div>
 
                         <p className="text-sm text-center text-sky-500 mt-2">
-                            <Link to="/forgot-password" className="text-base text-sky-500 hover:text-indigo-500 transition">
+                            <Link to="/forgot-password" className="text-sky-500 hover:text-indigo-500 transition">
                                 Forgot password?
                             </Link>
                         </p>

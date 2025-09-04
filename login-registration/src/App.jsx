@@ -16,7 +16,7 @@ export default function App() {
         </div>
 
         <div className="p-8 flex flex-col justify-center space-y-6">
-          <h2 className="text-3xl font-semibold text-center text-gray-700 pb-4">
+          <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
             Welcome
           </h2>
 

@@ -32,7 +32,10 @@ export default function PhoneStep({ phone, setPhone, onNext }) {
                 value={phone} 
                 onChange={(e) => setPhone(e.target.value)} 
                 placeholder="09123456789"
-                className="w-full border border-sky-500 rounded-lg p-2 text-gray-900 focus:outline-none focus:ring focus:ring-blue-400"
+                className="
+                    w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                    hover:border-indigo-500 transition focus:outline-none
+                "
             />
 
             {error && <p className="text-red-500 text-sm">{error}</p>}

@@ -29,7 +29,10 @@ export default function PhoneStep({ phoneOrEmail, setPhoneOrEmail, nextStep }) {
                     value={phoneOrEmail}
                     onChange={(e) => setPhoneOrEmail(e.target.value)}
                     placeholder="Phone or Email"
-                    className="w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 focus:outline-none focus:ring focus:ring-blue-400 hover:border-indigo-500 transition"
+                    className="
+                        w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                        hover:border-indigo-500 transition focus:outline-none
+                    "
                 />
 
             </div>

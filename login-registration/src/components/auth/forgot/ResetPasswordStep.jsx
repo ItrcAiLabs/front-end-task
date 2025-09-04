@@ -38,7 +38,7 @@ export default function ResetPasswordStep({ newPassword, setNewPassword, prevSte
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
             <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
-                Set a new password
+                Set a New Password
             </h2>
 
             <div>
@@ -47,7 +47,10 @@ export default function ResetPasswordStep({ newPassword, setNewPassword, prevSte
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Enter your new password"
-                    className="w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 hover:border-indigo-500 transition"
+                    className="
+                        w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                        hover:border-indigo-500 transition focus:outline-none
+                    "
                 />
             </div>
 

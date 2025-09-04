@@ -37,7 +37,10 @@ export default function CredentialsStep({ username, setUsername, password, setPa
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Username"
                 autoComplete="off" 
-                className="w-full border border-sky-500 rounded-lg p-2 text-gray-900"
+                className="
+                    w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                    hover:border-indigo-500 transition focus:outline-none
+                "
             />
 
             <input
@@ -45,7 +48,10 @@ export default function CredentialsStep({ username, setUsername, password, setPa
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full border border-sky-500 rounded-lg p-2 text-gray-900"
+                className="
+                    w-full border-[0.16vw] border-sky-500 rounded-lg p-2 text-gray-900 
+                    hover:border-indigo-500 transition focus:outline-none
+                "
             />
 
             {success && <p className="text-green-600 text-sm">{success}</p>}
