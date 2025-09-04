@@ -41,7 +41,7 @@ export default function Login() {
 
                 <div className="p-8 flex flex-col justify-center">
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <h2 className="text-3xl font-semibold text-center text-gray-700 pb-4">
+                        <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
                             Log in
                         </h2>
 
@@ -74,18 +74,27 @@ export default function Login() {
 
                         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-                        <button
-                            type="submit"
-                            className="
-                                w-full bg-sky-500 text-white py-2 rounded-lg  
-                                transition duration-400 hover:bg-sky-600
-                            "
-                        >
-                            Log in
-                        </button>
+                        <div className="flex justify-between">
+                            <button
+                                type="button"
+                                onClick={() => navigate("/")}
+                                className="w-[48%] bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
+                            >
+                                back
+                            </button>
+                            <button
+                                type="submit"
+                                className="
+                                    w-[48%] bg-sky-500 text-white py-2 rounded-lg  
+                                    transition duration-400 hover:bg-sky-600
+                                "
+                            >
+                                Log in
+                            </button>
+                        </div>
 
                         <p className="text-sm text-center text-sky-500 mt-2">
-                            <Link to="/forgot-password" className="text-sky-500 hover:text-indigo-500 transition">
+                            <Link to="/forgot-password" className="text-base text-sky-500 hover:text-indigo-500 transition">
                                 Forgot password?
                             </Link>
                         </p>

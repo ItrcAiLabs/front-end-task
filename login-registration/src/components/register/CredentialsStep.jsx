@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function CredentialsStep({ username, setUsername, password, setPassword }) {
+    const [success, setSuccess] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -16,8 +18,11 @@ export default function CredentialsStep({ username, setUsername, password, setPa
             JSON.stringify({ username, password })
         );
 
-        alert("Registration was successful, now you can login");
-        navigate("/login");
+        setSuccess("Registration was successful! Redirecting to login...");
+        
+        setTimeout(() => {
+            navigate("/login");
+        }, 3000);
     };
 
     return (
@@ -42,6 +47,8 @@ export default function CredentialsStep({ username, setUsername, password, setPa
                 placeholder="Password"
                 className="w-full border border-sky-500 rounded-lg p-2 text-gray-900"
             />
+
+            {success && <p className="text-green-600 text-sm">{success}</p>}
 
             <button
                 type="submit"

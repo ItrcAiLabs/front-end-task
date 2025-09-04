@@ -11,6 +11,8 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const prevStep = () => setStep((prev) => prev - 1);
+
     return (
         <div className="flex items-center justify-center h-[80vh]">
             <div className="aspect-[2/1] w-full max-w-4xl bg-white rounded-2xl shadow-md overflow-hidden grid grid-cols-2">
@@ -36,6 +38,7 @@ export default function Register() {
                         <OtpStep
                             phone={phone}
                             onNext={() => setStep(3)}
+                            prevStep={prevStep}
                         />
                     )}
 
@@ -45,6 +48,7 @@ export default function Register() {
                             setUsername={setUsername}
                             password={password}
                             setPassword={setPassword}
+                            prevStep={prevStep}
                             onFinish={() => navigate("/dashboard")}
                         />
                     )}

@@ -4,6 +4,7 @@ export default function OtpStep({ otp, setOtp, nextStep, prevStep }) {
     const [generatedOtp, setGeneratedOtp] = useState("");
     const [timeLeft, setTimeLeft] = useState(60);
     const [canResend, setCanResend] = useState(false);
+    const [error, setError] = useState("");
 
     const generateOtp = () => {
         const newOtp = Math.floor(1000 + Math.random() * 9000).toString();
@@ -34,12 +35,12 @@ export default function OtpStep({ otp, setOtp, nextStep, prevStep }) {
         e.preventDefault();
 
         if (otp !== generatedOtp) {
-            alert("Wrong or expired code");
+            setError("Wrong or expired code");
             return;
         }
 
         if (timeLeft <= 0) {
-            alert("OTP expired. Please request a new one.");
+            setError("OTP expired. Please request a new one.");
             return;
         }
 
@@ -49,7 +50,7 @@ export default function OtpStep({ otp, setOtp, nextStep, prevStep }) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-semibold text-center text-gray-700">
+            <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
                 Code Verification
             </h2>
 
@@ -63,27 +64,15 @@ export default function OtpStep({ otp, setOtp, nextStep, prevStep }) {
                 />
             </div>
 
-            <div className="text-center text-sm text-gray-600">
-                {canResend ? (
-                    <button
-                        type="button"
-                        onClick={generateOtp}
-                        className="text-blue-500 hover:underline"
-                    >
-                        Resend OTP
-                    </button>
-                ) : (
-                    <p>OTP expires in {timeLeft}s</p>
-                )}
-            </div>
-            
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
             <div className="flex justify-between">
                 <button
                     type="button"
                     onClick={prevStep}
                     className="w-[48%] bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
                 >
-                    return
+                    back
                 </button>
 
                 <button
@@ -93,6 +82,19 @@ export default function OtpStep({ otp, setOtp, nextStep, prevStep }) {
                 >
                     Submit
                 </button>
+            </div>
+            
+            <div className="text-center text-sky-500 transition">
+                {canResend ? (
+                    <button
+                        type="button"
+                        onClick={generateOtp}
+                    >
+                        Resend OTP
+                    </button>
+                ) : (
+                    <p>OTP expires in {timeLeft}s</p>
+                )}
             </div>
         </form>
     );

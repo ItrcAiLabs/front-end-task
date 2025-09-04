@@ -49,6 +49,7 @@ export default function ForgotPassword() {
                             username={username} 
                             newPassword={newPassword}
                             setNewPassword={setNewPassword}
+                            prevStep={prevStep}
                         />
                     )}
                 </div>

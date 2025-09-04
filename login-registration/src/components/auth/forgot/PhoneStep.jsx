@@ -1,9 +1,15 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function PhoneStep({ phoneOrEmail, setPhoneOrEmail, nextStep }) {
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!phoneOrEmail) {
-            alert("please enter your phone number or email");
+            setError("please enter your phone number or email");
             return;
         }
 
@@ -13,7 +19,7 @@ export default function PhoneStep({ phoneOrEmail, setPhoneOrEmail, nextStep }) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-3xl font-semibold text-center text-gray-700">
+            <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
                 Reset Password
             </h2>
 
@@ -27,12 +33,24 @@ export default function PhoneStep({ phoneOrEmail, setPhoneOrEmail, nextStep }) {
                 />
 
             </div>
-            <button
-                type="submit"
-                className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
-            >
-                send verification code
-            </button>
+
+            {error && <p className="text-red-500 text-sm">{error}</p>}
+
+            <div className="flex justify-between">
+                <button
+                    type="button"
+                    onClick={() => navigate("/login")}
+                    className="w-[48%] bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
+                >
+                    back
+                </button>
+                <button
+                    type="submit"
+                    className="w-[48%] bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+                >
+                    send otp
+                </button>
+            </div>
         </form>
     )
 }

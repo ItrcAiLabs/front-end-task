@@ -51,7 +51,7 @@ export default function OtpStep({ phone, onNext }) {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-3xl font-semibold text-center text-gray-700 pb-4">
+            <h2 className="text-2xl font-semibold text-center text-gray-700 pb-4">
                 OTP Verification
             </h2>
             <p className="text-center text-sm text-gray-600">
@@ -81,12 +81,12 @@ export default function OtpStep({ phone, onNext }) {
                     <button
                         type="button"
                         onClick={generateOtp}
-                        className="text-base font-semibold text-blue-500 hover:text-blue-600 transition"
+                        className="text-base text-blue-500 hover:text-blue-600 transition"
                     >
                         Resend OTP
                     </button>
                 ) : (
-                    <p className="text-base font-semibold">OTP expires in {timeLeft}s</p>
+                    <p className="text-base">OTP expires in {timeLeft}s</p>
                 )}
             </div>
         </form>
